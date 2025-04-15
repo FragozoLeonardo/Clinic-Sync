@@ -2,7 +2,7 @@
 
 ## ClinicSync - Flow Chart Explanation
 
-![ClinicSync Flow Chart](https://postimg.cc/zbXc5TwD)
+![ClinicSync Flow Chart](https://i.postimg.cc/sXpdYcvW/Clinic-Sync-Flow-Chart.png)
 
 This flowchart presents the core logic of the **ClinicSync** system, a role-based medical management platform. Below is a detailed breakdown of each flow:
 
