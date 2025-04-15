@@ -1,24 +1,11 @@
-# README
+#TODO: Continue Writing The TODO
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 🗂️ Use Case Diagram - ClinicSync
 
-Things you may want to cover:
+The diagram below illustrates the main roles and interactions in the ClinicSync system:
 
-* Ruby version
+- **Secretary** can manage patients and appointments
+- **Doctor** can request exams and prescribe medications
+- **Admin** has access to user management and system reports
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![ClinicSync Use Case Diagram](https://i.postimg.cc/qRVpMNgw/Clinic-Sync-Use-Case.jpg)
