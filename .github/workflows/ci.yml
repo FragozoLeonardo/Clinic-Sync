@@ -54,7 +54,7 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  test:
+    test:
     runs-on: ubuntu-latest
 
     services:
@@ -69,11 +69,18 @@ jobs:
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 10
+
+    env:
+      RAILS_ENV: test
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: password
+      DATABASE_URL: postgres://postgres:password@localhost:5432/clinicsync_test
 
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable postgresql-client
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -84,22 +91,20 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..15}; do
+            pg_isready -h localhost -p 5432 && break
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
+
       - name: Prepare test database
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASSWORD: password
         run: |
           bin/rails db:create
           bin/rails db:schema:load
 
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASSWORD: password
         run: |
           bin/rails test:all
 
