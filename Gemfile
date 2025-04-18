@@ -72,3 +72,5 @@ group :test do
   gem "selenium-webdriver"
   gem "database_cleaner-active_record"
 end
+
+gem "tailwindcss-rails", "~> 4.2"
