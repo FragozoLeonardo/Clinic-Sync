@@ -11,12 +11,10 @@ development:
   database: clinicsync_development
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: clinicsync_test
-  username: <%= ENV.fetch("PGUSER", "postgres") %>
-  password: <%= ENV.fetch("PGPASSWORD", "password") %>
-  host: <%= ENV.fetch("PGHOST", "localhost") %>
+  username: <%= ENV.fetch("PG_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("PG_PASSWORD", "password") %>
 
 production:
   <<: *default
