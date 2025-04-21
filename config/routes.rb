@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get "/admin/home", to: "admins#home", as: "admins_home"
   get "/doctors/home", to: "doctors#home", as: "doctors_home"
+  get "/secretaries/home", to: "secretaries#home", as: "secretaries_home"
+  get "/patients/home", to: "patients#home", as: "patients_home"
 
   resource :session
   resources :passwords, param: :token
