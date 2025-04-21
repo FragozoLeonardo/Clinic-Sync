@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  get "/admin/home", to: "admins#home", as: "admins_home"
+  get "/doctors/home", to: "doctors#home", as: "doctors_home"
+  get "/secretaries/home", to: "secretaries#home", as: "secretaries_home"
+  get "/patients/home", to: "patients#home", as: "patients_home"
+
+  resource :session
+  resources :passwords, param: :token
+  root "sessions#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
