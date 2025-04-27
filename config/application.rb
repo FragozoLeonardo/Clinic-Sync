@@ -23,5 +23,6 @@ module Clinicsync
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths = config.eager_load_paths.dup.unshift("#{config.root}/lib")
   end
 end

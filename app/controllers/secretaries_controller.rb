@@ -7,7 +7,7 @@ class SecretariesController < ApplicationController
   private
 
   def require_secretary
-    unless user_signed_in? && current_user.is_a?(Secretary)
+    unless user_signed_in? && AuthorizeUser.call(current_user, Secretary)
       redirect_to root_path, alert: "You are not authorized to access this page."
     end
   end
