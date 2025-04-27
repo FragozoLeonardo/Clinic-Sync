@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
   private
 
   def require_admin
-    unless user_signed_in? && current_user.is_a?(Admin)
+    unless user_signed_in? && AuthorizeUser.call(current_user, Admin)
       redirect_to root_path, alert: "You are not authorized to access this page."
     end
   end

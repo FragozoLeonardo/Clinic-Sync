@@ -7,7 +7,7 @@ class DoctorsController < ApplicationController
   private
 
   def require_doctor
-    unless user_signed_in? && current_user.is_a?(Doctor)
+    unless user_signed_in? &&  AuthorizeUser.call(current_user, Doctor)
       redirect_to root_path, alert: "You are not authorized to access this page."
     end
   end
