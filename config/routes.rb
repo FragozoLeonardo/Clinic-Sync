@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :patient_profiles
   get "/admin/home", to: "admins#home", as: "admins_home"
   get "/doctors/home", to: "doctors#home", as: "doctors_home"
   get "/secretaries/home", to: "secretaries#home", as: "secretaries_home"
