@@ -49,7 +49,7 @@ class PatientProfilesController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(
-      :email_address,
+      :email,
       :password,
       :password_confirmation,
       patient_profile_attributes: %i[full_name cpf phone birth_date]
